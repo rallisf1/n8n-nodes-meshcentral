@@ -37,11 +37,12 @@ async function execPromise(command: string): Promise<IExecReturnData> {
 	});
 }
 
-export class MeshCentral implements INodeType {
+export class Meshcentral implements INodeType {
 		description: INodeTypeDescription = {
 		displayName: 'MeshCentral CMD',
 		name: 'meshcentral',
-		icon: 'file:MeshCentral.png',
+		// eslint-disable-next-line n8n-nodes-base/node-class-description-icon-not-svg
+		icon: 'file:Meshcentral.png',
 		group: ['input'],
 		description: 'Control your MeshCentral server via meshctrl.js',
 		version: 1,
@@ -52,7 +53,7 @@ export class MeshCentral implements INodeType {
 		outputs: ['main'],
 		credentials: [
 			{
-				name: 'meshcentral',
+				name: 'meshcentralApi',
 				required: true,
 			},
 		],
@@ -118,7 +119,7 @@ export class MeshCentral implements INodeType {
 
 		const returnItems: INodeExecutionData[] = [];
 
-		const credentials = await this.getCredentials('meshcentral');
+		const credentials = await this.getCredentials('meshcentralApi');
 
 		if (credentials === undefined) {
 			throw new NodeOperationError(this.getNode(), 'No credentials got returned!');

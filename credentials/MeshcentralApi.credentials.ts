@@ -3,9 +3,9 @@ import {
 	INodeProperties,
 } from 'n8n-workflow';
 
-export class MeshCentral implements ICredentialType {
-	name = 'meshcentral';
-	displayName = 'MeshCentral';
+export class MeshcentralApi implements ICredentialType {
+	name = 'meshcentralApi';
+	displayName = 'MeshCentral API';
 	properties: INodeProperties[] = [
 		{
 			displayName: 'URL',
