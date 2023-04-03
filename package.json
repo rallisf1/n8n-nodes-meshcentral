@@ -1,0 +1,60 @@
+{
+  "name": "n8n-nodes-meshcentral",
+  "version": "1.0.0",
+  "description": "n8n node for MeshCentral integration via meshctrl.js",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc && gulp build:icons && cp meshctrl.js dist || copy meshctrl.js dist",
+    "dev": "tsc --watch",
+    "format": "prettier nodes credentials --write",
+    "lint": "tslint -p tsconfig.json -c tslint.json && eslint nodes credentials package.json",
+    "lintfix": "tslint --fix -p tsconfig.json -c tslint.json && eslint nodes credentials package.json --fix",
+    "prepublishOnly": "npm run build && npm run lint -c .eslintrc.prepublish.js nodes credentials package.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "credentials": [
+      "dist/credentials/MeshCentral.credentials.js"
+    ],
+    "nodes": [
+      "dist/nodes/MeshCentral/MeshCentral.node.js"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rallisf1/n8n-nodes-meshcentral.git"
+  },
+  "keywords": [
+    "n8n-community-node-package",
+    "n8n",
+    "meshcentral"
+  ],
+  "author": "John Rallis",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rallisf1/n8n-nodes-meshcentral/issues"
+  },
+  "homepage": "https://github.com/rallisf1/n8n-nodes-meshcentral#readme",
+  "dependencies": {
+    "https-proxy-agent": "^5.0.1",
+    "minimist": "^1.2.8",
+    "ws": "^8.13.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.15.11",
+    "@typescript-eslint/parser": "^5.57.0",
+    "eslint-plugin-n8n-nodes-base": "^1.12.1",
+    "gulp": "^4.0.2",
+    "n8n-core": "^0.161.0",
+    "n8n-workflow": "^0.143.0",
+    "prettier": "^2.8.7",
+    "tslint": "^6.1.3",
+    "typescript": "^5.0.2"
+  },
+  "browser": {
+    "child_process": false
+  }
+}
