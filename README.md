@@ -22,7 +22,7 @@ Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes
 
 At the moment it runs every meshctrl command except: showevents, upload, download, agentdownload. It always returns a JSON response. Responses that don't contain data appear in a `{result}` key.
 
-Beware that this node accepts a single input, which may provide multiple items / variables. Further inputs are discarded (Execute Once by default). Instead of using expressions you can use variables (inputs) in the command input inside curly braces e.g. `{userGroup}`
+Beware that this node accepts a single input, which may provide multiple items / variables. Further inputs are discarded (Execute Once by default). [Expressions](https://docs.n8n.io/code-examples/expressions/) are supported in the command input.
 
 ## Credentials
 
@@ -49,4 +49,6 @@ Under the hood this package includes a copy of meshctrl.js and runs it on the n8
 
 - Initial Release, includes [MeshCentral PR #5068](https://github.com/Ylianst/MeshCentral/pull/5068)
 
+1.0.1
 
+- Added support for n8n expressions
