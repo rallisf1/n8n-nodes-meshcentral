@@ -65,7 +65,7 @@ export class Meshcentral implements INodeType {
 				default: 'help',
 				placeholder: 'e.g. adduser --user SampleUser --pass SamplePassword',
 				description: 'Run `node ./node_modules/meshcentral/meshctrl` on your MeshCentral server for help',
-				noDataExpression: true,
+				noDataExpression: false,
 			},
 			{
 				displayName: 'Result Separator',
@@ -84,7 +84,7 @@ export class Meshcentral implements INodeType {
 				description: 'Whether to add debug information to the logs',
 			},
 			{
-				displayName: 'The connection arguments derive from the credentials. "--json" is appended by default. You can use variables from input nodes in curly braces e.g. {name}. Unsupported commands: showevents, upload, download, agentdownload',
+				displayName: 'The connection arguments derive from the credentials. "--json" is appended by default. Use variables in your command via <a href="https://docs.n8n.io/code-examples/expressions/" target="_doc">expressions</a>. Unsupported commands: showevents, upload, download, agentdownload',
 				name: 'notice',
 				type: 'notice',
 				default: '',
@@ -110,7 +110,6 @@ export class Meshcentral implements INodeType {
 
 		let items = this.getInputData();
 		const unsupported = ['showevents', 'upload', 'download', 'agentdownload'];
-		let item: INodeExecutionData;
 		let command: string;
 		let separator: string;
 		let debugOn: boolean;
@@ -130,19 +129,6 @@ export class Meshcentral implements INodeType {
 				command = this.getNodeParameter('cmd', itemIndex) as string;
 				separator = this.getNodeParameter('sep', itemIndex) as string;
 				debugOn = this.getNodeParameter('debug', itemIndex) as boolean;
-				item = items[itemIndex];
-
-				Object.keys(item.json).forEach(param => {
-					// @ts-ignore
-					if(item.json[param].indexOf(' ') > -1) { // accomodate strings that include spaces
-						// @ts-ignore
-						command = command.replace(`{${param}}`, `"${item.json[param]}"`);
-					} else {
-						// @ts-ignore
-						command = command.replace(`{${param}}`, item.json[param]);
-					}
-					delete item.json[param];
-				});
 
 				if(unsupported.indexOf(command.split(' ')[0]) > -1) throw new NodeOperationError(this.getNode(), 'Usage of unsupported command: ' + unsupported.join(', '));
 
