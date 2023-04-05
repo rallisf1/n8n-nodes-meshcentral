@@ -96,9 +96,15 @@ export class Meshcentral implements INodeType {
 		const os = require('os');
 		const path = require('path');
 		const fs = require('fs');
-
-		let meshctrlPath = os.homedir() + path.join('.n8n', 'nodes', 'node_modules', 'n8n-nodes-meshcentral', 'meshctrl.js');
 		
+		// standard instance
+		let meshctrlPath = os.homedir() + path.join('.n8n', 'nodes', 'node_modules', 'n8n-nodes-meshcentral', 'dist', 'meshctrl.js');
+		
+		// docker instance
+		if (!fs.existsSync(meshctrlPath)) {
+			meshctrlPath = path.join('/home', 'node', '.n8n', 'nodes', 'node_modules', 'n8n-nodes-meshcentral', 'dist', 'meshctrl.js');
+		}
+
 		// for dev environment
 		if(!fs.existsSync(meshctrlPath)) {
 			meshctrlPath = path.join('.', 'node_modules', 'n8n-nodes-meshcentral', 'meshctrl.js');

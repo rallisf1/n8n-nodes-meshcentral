@@ -16,7 +16,7 @@ MeshCentral is a full computer management web site. With MeshCentral, you can ru
 
 ## Installation
 
-Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes/installation/) in the n8n community nodes documentation.
+Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes/installation/) in the n8n community nodes documentation. Remember to restart your n8n instance after updating community node(s).
 
 ## Operations
 
@@ -52,3 +52,7 @@ Under the hood this package includes a copy of meshctrl.js and runs it on the n8
 1.0.1
 
 - Added support for n8n expressions
+
+1.0.3
+
+- Fix meshctrl.js paths for production
