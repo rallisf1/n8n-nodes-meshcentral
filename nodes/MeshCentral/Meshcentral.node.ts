@@ -76,7 +76,7 @@ function toOutputItems(value: unknown, itemIndex: number): INodeExecutionData[] 
 	}));
 }
 
-export class MeshCentral implements INodeType {
+export class Meshcentral implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'MeshCentral CMD',
 		name: 'meshcentral',
