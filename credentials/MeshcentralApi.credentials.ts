@@ -1,11 +1,10 @@
-import {
-	ICredentialType,
-	INodeProperties,
-} from 'n8n-workflow';
+import type { ICredentialType, INodeProperties } from 'n8n-workflow';
 
 export class MeshcentralApi implements ICredentialType {
 	name = 'meshcentralApi';
 	displayName = 'MeshCentral API';
+	documentationUrl = 'https://github.com/rallisf1/n8n-nodes-meshcentral#credentials';
+	icon = { light: 'file:MeshCentral.png' as const, dark: 'file:MeshCentral.png' as const };
 	properties: INodeProperties[] = [
 		{
 			displayName: 'URL',
@@ -48,7 +47,8 @@ export class MeshcentralApi implements ICredentialType {
 			placeholder: 'http://proxy:123',
 		},
 		{
-			displayName: 'It is recommended to create a new user, with only the required permissions, to use with meshctrl. 2FA is not supported; use your n8n\'s server IP in your "skip2factor" config key. Login Token Keys are not supported. Login Key Files are also not supported; just create multiple credentials.',
+			displayName:
+				'It is recommended to create a new user, with only the required permissions, to use with meshctrl. 2FA is not supported; use your n8n\'s server IP in your "skip2factor" config key. Login Token Keys are not supported. Login Key Files are also not supported; just create multiple credentials.',
 			name: 'notice',
 			type: 'notice',
 			default: '',

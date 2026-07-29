@@ -1,10 +1,8 @@
 {
-	"node": "n8n-nodes-base.Meshcentral",
+	"node": "n8n-nodes-meshcentral.meshcentral",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
-	"categories": [
-		"Miscellaneous"
-	],
+	"categories": ["Miscellaneous"],
 	"resources": {
 		"credentialDocumentation": [
 			{

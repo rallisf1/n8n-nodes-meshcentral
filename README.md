@@ -32,7 +32,7 @@ You may also use a proxy.
 
 ## Compatibility
 
-Tested with n8n Version 0.222.0 and MeshCentral 1.1.4
+Tested with n8n 2.x and Node.js 22. This is a self-hosted-only node: it bundles and runs `meshctrl.js`, which isn't permitted in n8n Cloud's community-node environment.
 
 ## How it works
 
@@ -56,3 +56,9 @@ Under the hood this package includes a copy of meshctrl.js and runs it on the n8
 1.0.3
 
 - Fix meshctrl.js paths for production
+
+2.0.0
+
+- Updated for n8n 2.x and the current n8n node tooling
+- Resolve the bundled `meshctrl.js` relative to the installed package instead of a hard-coded n8n data directory
+- Process all incoming items and preserve item linking
